@@ -2,8 +2,7 @@ package com.codingshuttle.project.airBnbApp.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,6 +18,9 @@ import java.time.LocalDateTime;
                 name = "unique_hotel_room_date",
                 columnNames = {"hotel_id", "room_id", "date"}
         ))
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Inventory {
 
     @Id
@@ -38,6 +40,10 @@ public class Inventory {
 
     @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
     private Integer bookedCount;
+
+
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer reservedCount;
 
     @Column(nullable = false)
     private Integer totalCount;
